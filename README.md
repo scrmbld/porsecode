@@ -1,1 +1,1 @@
-Porsecode is a (work in progress) implementation of Recommendation ITU-R M.1677 International Morse code using unicode characters in Python.
+A simple program for encoding and decoding moree code written in Pyhton
