@@ -1,1 +1,1 @@
-A simple program for encoding and decoding moree code written in Pyhton
+A simple program for encoding and decoding morse code written in Pyhton
