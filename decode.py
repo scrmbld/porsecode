@@ -3,6 +3,14 @@ import sys
 #create the morse code dictionary
 dict = {'.-': 'a', '-...': 'b', '-.-.': 'c', '-..': 'd', '.': 'e', '..-.': 'f', '--.': 'g', '....': 'h', '..': 'i', '.---.': 'j', '-.-': 'k', '.-..': 'l', '--': 'm', '-.': 'n', '---': 'o', '.--.': 'p', '--.-': 'q', '.-.': 'r', '...': 's', '-': 't', '..-': 'u', '...-': 'v', '.--': 'w', '-..-': 'x', '-.--': 'y', '--..': 'z', '.----': '1', '..---': '2', '...--': '3', '....-': '4', '.....': '5', '-....': '6', '--...': '7', '---..': '8', '----.': '9', '-----': '0', '.-.-.-': '.', '--..--': ',', '---...': ':', '..--..': '?', '.----.': '\'', '-....-': '-', '-..-.': '/', '-.--.': '(', '-.--.-': ')', '.-..-.': '\"', '-...-': '=', '.-.-.': '+'}
 
+def contains_whitespace(in_string):
+    for i in range(len(in_string)):
+        if in_string[i].isspace():
+            return True
+
+    return False
+
+
 #decodes from morse code into plain text
 def morse_decode(string):
     retval = ""
@@ -23,13 +31,11 @@ def morse_decode(string):
 def dehomogenize(message):
     retval = ""
     message = message.strip()
-    char = message[0]
-    message = message.split(' ')
     space_count = 0
-    for c in message:
-        if c == char:
+    for c in message.split(' '):
+        if len(c) == 1 and not contains_whitespace(c):
             retval += '.'
-        elif c == char + char + char:
+        elif len(c) == 3 and not contains_whitespace(c):
             retval += '-'
         elif c == '':
             space_count += 1
